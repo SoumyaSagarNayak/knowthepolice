@@ -1,5 +1,8 @@
-import React from 'react';
-import { AlertCircle, FileText, MapPin, Globe, Bot, Download, HelpCircle, CheckSquare, GitMerge, Scale } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { 
+  AlertCircle, FileText, MapPin, Globe, Bot, Download, 
+  HelpCircle, CheckSquare, GitMerge, Scale, ChevronDown, Sparkles, ShieldCheck 
+} from 'lucide-react';
 import { Language, TRANSLATIONS } from '../data/translations';
 
 interface HeaderProps {
@@ -30,140 +33,186 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenLegalRefs
 }) => {
   const t = TRANSLATIONS[currentLang];
+  const [isToolsOpen, setIsToolsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsToolsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const toolMenuItems = [
+    {
+      icon: Bot,
+      color: 'text-amber-400',
+      bgColor: 'bg-amber-500/10 border-amber-500/30',
+      title: 'AI Rights Assistant',
+      desc: 'Ask any situation for legal advice',
+      action: () => { onOpenAIGuide(); setIsToolsOpen(false); }
+    },
+    {
+      icon: CheckSquare,
+      color: 'text-emerald-400',
+      bgColor: 'bg-emerald-500/10 border-emerald-500/30',
+      title: 'D.K. Basu Arrest Checklist',
+      desc: '11 mandatory rules police must follow',
+      action: () => { onOpenChecklist(); setIsToolsOpen(false); }
+    },
+    {
+      icon: HelpCircle,
+      color: 'text-blue-400',
+      bgColor: 'bg-blue-500/10 border-blue-500/30',
+      title: '"Am I Detained?" Wizard',
+      desc: 'Interactive detention decision helper',
+      action: () => { onOpenWizard(); setIsToolsOpen(false); }
+    },
+    {
+      icon: FileText,
+      color: 'text-purple-400',
+      bgColor: 'bg-purple-500/10 border-purple-500/30',
+      title: 'Official Complaint Generator',
+      desc: 'Draft legal letters to SP / SHRC',
+      action: () => { onOpenComplaintGen(); setIsToolsOpen(false); }
+    },
+    {
+      icon: GitMerge,
+      color: 'text-saffron-400',
+      bgColor: 'bg-saffron-500/10 border-saffron-500/30',
+      title: 'FIR Refusal Flowchart',
+      desc: 'Step-by-step escalation hierarchy',
+      action: () => { onOpenFlowchart(); setIsToolsOpen(false); }
+    },
+    {
+      icon: Scale,
+      color: 'text-amber-400',
+      bgColor: 'bg-amber-500/10 border-amber-500/30',
+      title: 'Supreme Court Case Laws',
+      desc: 'Key legal precedents & citations',
+      action: () => { onOpenLegalRefs(); setIsToolsOpen(false); }
+    },
+    {
+      icon: MapPin,
+      color: 'text-teal-400',
+      bgColor: 'bg-teal-500/10 border-teal-500/30',
+      title: 'State Complaints Directory',
+      desc: 'Contact numbers for 28 States & UTs',
+      action: () => { onOpenStateDir(); setIsToolsOpen(false); }
+    },
+    {
+      icon: Download,
+      color: 'text-rose-400',
+      bgColor: 'bg-rose-500/10 border-rose-500/30',
+      title: 'Offline Wallet Pass Card',
+      desc: 'Download pocket rights card',
+      action: () => { onOpenRightsCard(); setIsToolsOpen(false); }
+    }
+  ];
 
   return (
-    <header className="sticky top-0 z-40 bg-[#080d19]/95 backdrop-blur-md border-b border-slate-800/80 shadow-md">
-      {/* Top Tricolor Strip Accent */}
+    <header className="sticky top-0 z-40 bg-[#080d19]/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg">
+      {/* Top Tricolor Accent Line */}
       <div className="h-1 w-full bg-gradient-to-r from-[#FF671F] via-[#FFFFFF] to-[#046A38]" />
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-3 min-h-[64px] gap-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between py-3 min-h-[64px] gap-3">
           
           {/* Logo & Brand Title */}
-          <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0 flex-1 pr-2">
+          <div className="flex items-center space-x-3 shrink-0">
             <div className="relative shrink-0">
               <img
                 src="/police-logo.png"
                 alt="Police Rights Logo"
-                className="w-9 h-9 sm:w-10 sm:h-10 object-contain bg-slate-900 rounded-lg p-1 border border-slate-700/80"
+                className="w-10 h-10 object-contain bg-slate-900 rounded-xl p-1 border border-slate-700/80 shadow-md"
               />
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-slate-950 animate-pulse" />
             </div>
 
-            <div className="min-w-0">
+            <div>
               <div className="flex items-center space-x-2">
-                <h1 className="text-sm sm:text-base md:text-lg font-bold text-white tracking-tight truncate max-w-[160px] xs:max-w-[200px] sm:max-w-xs md:max-w-sm lg:max-w-none">
+                <h1 className="text-base sm:text-lg md:text-xl font-black text-white tracking-tight">
                   {t.appName}
                 </h1>
-                <span className="hidden xl:inline-block px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-amber-400 border border-slate-700 rounded whitespace-nowrap">
+                <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-extrabold bg-saffron-500/10 text-saffron-400 border border-saffron-500/30 rounded-full">
                   BNSS 2023 & CrPC
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400 hidden lg:block truncate max-w-sm xl:max-w-md">
+              <p className="text-[11px] text-slate-400 hidden md:block">
                 {t.tagline}
               </p>
             </div>
           </div>
 
-          {/* Action Buttons & Language Selector */}
-          <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
+          {/* Clean Right Actions Suite */}
+          <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
             
-            {/* SOS Emergency Button */}
-            <button
-              onClick={onOpenSOS}
-              className="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-red-700 hover:bg-red-600 text-white font-bold text-xs rounded-lg shadow border border-red-500/40 transition-colors flex items-center space-x-1.5 shrink-0"
-            >
-              <AlertCircle className="w-4 h-4 text-white shrink-0" />
-              <span className="hidden xs:inline">{t.emergencyBtn}</span>
-              <span className="xs:hidden">SOS</span>
-            </button>
+            {/* Quick Tools Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsToolsOpen(!isToolsOpen)}
+                className={`px-3 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 border shadow-sm ${
+                  isToolsOpen 
+                    ? 'bg-saffron-500 text-navy-950 border-saffron-400' 
+                    : 'bg-slate-900/90 text-slate-200 border-slate-700/80 hover:bg-slate-800 hover:border-slate-600'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-saffron-400 shrink-0" />
+                <span className="hidden sm:inline">Legal Tools Hub</span>
+                <span className="sm:hidden">Tools</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isToolsOpen ? 'rotate-180' : ''}`} />
+              </button>
 
-            {/* Offline Wallet Rights Card Button */}
-            <button
-              onClick={onOpenRightsCard}
-              className="hidden lg:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 text-xs font-medium rounded-lg transition shrink-0"
-              title="Download Offline Rights Card"
-            >
-              <Download className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>Offline Pass</span>
-            </button>
+              {/* Dropdown Menu */}
+              {isToolsOpen && (
+                <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-slate-900/95 border border-slate-700/90 rounded-2xl shadow-2xl backdrop-blur-2xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                  <div className="px-4 py-2 border-b border-slate-800 flex items-center justify-between">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-saffron-400 flex items-center space-x-1.5">
+                      <ShieldCheck className="w-4 h-4" />
+                      <span>Citizen Legal Tools Suite</span>
+                    </span>
+                    <span className="text-[10px] text-slate-400">8 Utilities</span>
+                  </div>
 
-            {/* D.K. Basu Arrest Checklist Button */}
-            <button
-              onClick={onOpenChecklist}
-              className="hidden md:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 text-xs font-medium rounded-lg transition shrink-0"
-              title="D.K. Basu Arrest Checklist"
-            >
-              <CheckSquare className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-              <span>Checklist</span>
-            </button>
+                  <div className="max-h-[380px] overflow-y-auto p-2 space-y-1">
+                    {toolMenuItems.map((item, idx) => {
+                      const IconComp = item.icon;
+                      return (
+                        <button
+                          key={idx}
+                          onClick={item.action}
+                          className="w-full text-left p-2.5 rounded-xl hover:bg-slate-800/80 transition flex items-start space-x-3 group"
+                        >
+                          <div className={`p-2 rounded-lg border ${item.bgColor} shrink-0 group-hover:scale-105 transition-transform`}>
+                            <IconComp className={`w-4 h-4 ${item.color}`} />
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-100 group-hover:text-saffron-400 transition-colors">
+                              {item.title}
+                            </div>
+                            <div className="text-[11px] text-slate-400 line-clamp-1">
+                              {item.desc}
+                            </div>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
 
-            {/* FIR Refusal Flowchart Button */}
-            <button
-              onClick={onOpenFlowchart}
-              className="hidden lg:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 text-xs font-medium rounded-lg transition shrink-0"
-              title="FIR Refusal Hierarchy Flowchart"
-            >
-              <GitMerge className="w-3.5 h-3.5 text-saffron-400 shrink-0" />
-              <span>Flowchart</span>
-            </button>
-
-            {/* Supreme Court Case Laws Button */}
-            <button
-              onClick={onOpenLegalRefs}
-              className="hidden xl:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 text-xs font-medium rounded-lg transition shrink-0"
-              title="Supreme Court Case Laws & References"
-            >
-              <Scale className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>Case Laws</span>
-            </button>
-
-            {/* Decision Wizard Button */}
-            <button
-              onClick={onOpenWizard}
-              className="hidden xl:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 text-xs font-medium rounded-lg transition shrink-0"
-              title="Am I Being Detained? Wizard"
-            >
-              <HelpCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-              <span>Am I Detained?</span>
-            </button>
-
-            {/* AI Guide Button */}
-            <button
-              onClick={onOpenAIGuide}
-              className="hidden lg:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/30 text-xs font-semibold rounded-lg transition shrink-0"
-              title="AI Legal Assistant"
-            >
-              <Bot className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>AI Guide</span>
-            </button>
-
-            {/* Complaint Generator Button */}
-            <button
-              onClick={onOpenComplaintGen}
-              className="hidden 2xl:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-medium rounded-lg border border-slate-700/80 transition shrink-0"
-              title="Draft Official Complaint Letter"
-            >
-              <FileText className="w-3.5 h-3.5 text-slate-300 shrink-0" />
-              <span>{t.complaintGeneratorBtn}</span>
-            </button>
-
-            {/* State Directory Button */}
-            <button
-              onClick={onOpenStateDir}
-              className="hidden md:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-medium rounded-lg border border-slate-700/80 transition shrink-0"
-              title="State Police Complaints Directory"
-            >
-              <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-              <span>Directory</span>
-            </button>
-
-            {/* Language Switcher */}
-            <div className="relative flex items-center bg-slate-900 border border-slate-700/80 rounded-lg px-2 py-1.5 shrink-0">
-              <Globe className="w-3.5 h-3.5 text-slate-400 mr-1 shrink-0" />
+            {/* Language Selector */}
+            <div className="relative flex items-center bg-slate-900/90 border border-slate-700/80 rounded-xl px-2.5 py-1.5 shrink-0 shadow-sm">
+              <Globe className="w-3.5 h-3.5 text-slate-400 mr-1.5 shrink-0" />
               <select
                 value={currentLang}
                 onChange={(e) => onSelectLang(e.target.value as Language)}
-                className="bg-transparent text-xs font-medium text-slate-200 focus:outline-none cursor-pointer pr-1"
+                className="bg-transparent text-xs font-semibold text-slate-200 focus:outline-none cursor-pointer pr-1"
               >
                 <option value="en" className="bg-slate-900 text-slate-200">English</option>
                 <option value="hi" className="bg-slate-900 text-slate-200">हिंदी (Hindi)</option>
@@ -174,6 +223,15 @@ export const Header: React.FC<HeaderProps> = ({
                 <option value="kn" className="bg-slate-900 text-slate-200">ಕನ್ನಡ (Kannada)</option>
               </select>
             </div>
+
+            {/* Red SOS Button */}
+            <button
+              onClick={onOpenSOS}
+              className="px-3 py-2 bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-red-900/40 border border-red-400/40 transition-all transform hover:scale-105 active:scale-95 flex items-center space-x-1.5 shrink-0"
+            >
+              <AlertCircle className="w-4 h-4 text-white animate-pulse shrink-0" />
+              <span className="font-extrabold tracking-wide">{t.emergencyBtn}</span>
+            </button>
 
           </div>
 
