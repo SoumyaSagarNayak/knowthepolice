@@ -4,24 +4,28 @@
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  body {
+    background-color: #080d19;
+    color: #f1f5f9;
   }
 }
 
-/* Custom smooth scrollbars */
+/* Custom smooth scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: #080d19;
 }
 ::-webkit-scrollbar-thumb {
   background: #1e293b;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff8000;
+  background: #334155;
 }
 
 /* Print styling for complaint generator */
@@ -43,69 +47,32 @@
   }
 }
 
-/* Masterpiece Gradient Text Class with Solid Fallback */
-.text-gradient-saffron {
-  background: linear-gradient(135deg, #ff9933 0%, #ffcc00 45%, #10b981 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #ff9933;
-}
-
-/* Masterpiece Glassmorphism & Animated Mesh Backdrop */
-.bg-mesh-pattern {
-  background-color: #030712;
+/* Professional Authoritative Palette & Clean Glass Panel */
+.bg-subtle-mesh {
+  background-color: #080d19;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(255, 128, 0, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(225, 29, 72, 0.1) 0px, transparent 50%);
+    radial-gradient(at 50% 0%, rgba(230, 81, 0, 0.07) 0px, transparent 60%),
+    radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.5) 0px, transparent 50%);
 }
 
-.glass-panel-master {
-  background: rgba(11, 25, 44, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+.glass-card-pro {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.25s ease;
 }
 
-.glass-card-interactive {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(7, 15, 30, 0.9) 100%);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+.glass-card-pro:hover {
+  border-color: rgba(230, 81, 0, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6);
 }
 
-.glass-card-interactive:hover {
-  border-color: rgba(255, 128, 0, 0.5);
-  transform: translateY(-5px) scale(1.015);
-  box-shadow: 
-    0 20px 40px -15px rgba(0, 0, 0, 0.7),
-    0 0 30px rgba(255, 128, 0, 0.2);
+.text-accent-saffron {
+  color: #ff9d3b;
 }
 
-/* Shimmer Border effect */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, rgba(255,128,0,0) 0%, rgba(255,128,0,0.3) 50%, rgba(255,128,0,0) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 3s infinite;
-}
-
-/* Glowing Neon Pills */
-.glow-saffron {
-  box-shadow: 0 0 25px rgba(255, 128, 0, 0.35);
-}
-
-.glow-emerald {
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-}
-
-.glow-red {
-  box-shadow: 0 0 25px rgba(225, 29, 72, 0.45);
+.bg-accent-saffron {
+  background-color: #e65100;
 }
