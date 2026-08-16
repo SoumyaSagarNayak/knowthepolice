@@ -8,6 +8,10 @@ import { StateDirectoryModal } from './components/StateDirectoryModal';
 import { AILegalAssistantModal } from './components/AILegalAssistantModal';
 import { RightsCardModal } from './components/RightsCardModal';
 import { DecisionWizardModal } from './components/DecisionWizardModal';
+import { ArrestChecklistModal } from './components/ArrestChecklistModal';
+import { EscalationFlowchartModal } from './components/EscalationFlowchartModal';
+import { LegalReferencesModal } from './components/LegalReferencesModal';
+import { MobileEmergencyBar } from './components/MobileEmergencyBar';
 import { AIChatBotWidget } from './components/AIChatBotWidget';
 import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
@@ -16,7 +20,7 @@ import { SITUATIONS, Situation } from './data/situations';
 import { Language, TRANSLATIONS } from './data/translations';
 import { 
   Search, ShieldAlert, PhoneCall, Scale, FileText, MapPin, 
-  Sparkles, ShieldCheck, Bot, Download, HelpCircle
+  Sparkles, ShieldCheck, Bot, Download, HelpCircle, CheckSquare, GitMerge
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -33,6 +37,9 @@ export const App: React.FC = () => {
   const [isAIGuideOpen, setIsAIGuideOpen] = useState(false);
   const [isRightsCardOpen, setIsRightsCardOpen] = useState(false);
   const [isWizardOpen, setIsWizardOpen] = useState(false);
+  const [isChecklistOpen, setIsChecklistOpen] = useState(false);
+  const [isFlowchartOpen, setIsFlowchartOpen] = useState(false);
+  const [isLegalRefsOpen, setIsLegalRefsOpen] = useState(false);
 
   const t = TRANSLATIONS[lang];
 
@@ -67,6 +74,9 @@ export const App: React.FC = () => {
         onOpenAIGuide={() => setIsAIGuideOpen(true)}
         onOpenRightsCard={() => setIsRightsCardOpen(true)}
         onOpenWizard={() => setIsWizardOpen(true)}
+        onOpenChecklist={() => setIsChecklistOpen(true)}
+        onOpenFlowchart={() => setIsFlowchartOpen(true)}
+        onOpenLegalRefs={() => setIsLegalRefsOpen(true)}
       />
 
       {/* Hero Section */}
@@ -162,7 +172,31 @@ export const App: React.FC = () => {
                 className="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 border border-emerald-500/30 text-emerald-300 text-xs font-bold rounded-xl transition flex items-center space-x-1.5 shadow-sm"
               >
                 <HelpCircle className="w-3.5 h-3.5 text-emerald-400" />
-                <span>"Am I Detained?" Diagnostic Wizard</span>
+                <span>"Am I Detained?" Wizard</span>
+              </button>
+
+              <button
+                onClick={() => setIsChecklistOpen(true)}
+                className="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-slate-200 text-xs font-bold rounded-xl transition flex items-center space-x-1.5 shadow-sm"
+              >
+                <CheckSquare className="w-3.5 h-3.5 text-emerald-400" />
+                <span>D.K. Basu Checklist</span>
+              </button>
+
+              <button
+                onClick={() => setIsFlowchartOpen(true)}
+                className="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-slate-200 text-xs font-bold rounded-xl transition flex items-center space-x-1.5 shadow-sm"
+              >
+                <GitMerge className="w-3.5 h-3.5 text-saffron-400" />
+                <span>FIR Refusal Steps</span>
+              </button>
+
+              <button
+                onClick={() => setIsLegalRefsOpen(true)}
+                className="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-slate-200 text-xs font-bold rounded-xl transition flex items-center space-x-1.5 shadow-sm"
+              >
+                <Scale className="w-3.5 h-3.5 text-amber-400" />
+                <span>Supreme Court Case Laws</span>
               </button>
             </div>
           </motion.div>
@@ -285,14 +319,16 @@ export const App: React.FC = () => {
 
         {/* Situations Grid */}
         <div>
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
             <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center space-x-2">
               <ShieldCheck className="w-6 h-6 text-saffron-400" />
               <span>Select Your Police Situation</span>
             </h2>
-            <span className="text-xs font-mono text-slate-400">
-              Showing {filteredSituations.length} of {SITUATIONS.length} scenarios
-            </span>
+            <div className="flex items-center space-x-2">
+              <span className="text-xs font-mono text-slate-300 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800 shadow-inner">
+                Showing <strong className="text-saffron-400">{filteredSituations.length}</strong> of {SITUATIONS.length} scenarios {searchTerm ? `for "${searchTerm}"` : ''}
+              </span>
+            </div>
           </div>
 
           {filteredSituations.length === 0 ? (
@@ -392,6 +428,28 @@ export const App: React.FC = () => {
         onSelectSituation={setSelectedSituation}
         onOpenComplaintGen={handleOpenComplaintForSituation}
       />
+
+      <ArrestChecklistModal
+        isOpen={isChecklistOpen}
+        onClose={() => setIsChecklistOpen(false)}
+        lang={lang}
+      />
+
+      <EscalationFlowchartModal
+        isOpen={isFlowchartOpen}
+        onClose={() => setIsFlowchartOpen(false)}
+        onOpenComplaintGen={() => handleOpenComplaintForSituation('fir-refusal')}
+        lang={lang}
+      />
+
+      <LegalReferencesModal
+        isOpen={isLegalRefsOpen}
+        onClose={() => setIsLegalRefsOpen(false)}
+        lang={lang}
+      />
+
+      {/* Mobile Emergency Dial Bar */}
+      <MobileEmergencyBar />
 
     </div>
   );

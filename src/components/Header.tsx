@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertCircle, FileText, MapPin, Globe, Bot, Download, HelpCircle } from 'lucide-react';
+import { AlertCircle, FileText, MapPin, Globe, Bot, Download, HelpCircle, CheckSquare, GitMerge, Scale } from 'lucide-react';
 import { Language, TRANSLATIONS } from '../data/translations';
 
 interface HeaderProps {
@@ -11,6 +11,9 @@ interface HeaderProps {
   onOpenAIGuide: () => void;
   onOpenRightsCard: () => void;
   onOpenWizard: () => void;
+  onOpenChecklist: () => void;
+  onOpenFlowchart: () => void;
+  onOpenLegalRefs: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -21,12 +24,18 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenStateDir,
   onOpenAIGuide,
   onOpenRightsCard,
-  onOpenWizard
+  onOpenWizard,
+  onOpenChecklist,
+  onOpenFlowchart,
+  onOpenLegalRefs
 }) => {
   const t = TRANSLATIONS[currentLang];
 
   return (
     <header className="sticky top-0 z-40 bg-[#080d19]/95 backdrop-blur-md border-b border-slate-800/80 shadow-md">
+      {/* Top Tricolor Strip Accent */}
+      <div className="h-1 w-full bg-gradient-to-r from-[#FF671F] via-[#FFFFFF] to-[#046A38]" />
+
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-3 min-h-[64px] gap-2">
           
@@ -76,6 +85,36 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Download className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>Offline Pass</span>
+            </button>
+
+            {/* D.K. Basu Arrest Checklist Button */}
+            <button
+              onClick={onOpenChecklist}
+              className="hidden md:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 text-xs font-medium rounded-lg transition shrink-0"
+              title="D.K. Basu Arrest Checklist"
+            >
+              <CheckSquare className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>Checklist</span>
+            </button>
+
+            {/* FIR Refusal Flowchart Button */}
+            <button
+              onClick={onOpenFlowchart}
+              className="hidden lg:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 text-xs font-medium rounded-lg transition shrink-0"
+              title="FIR Refusal Hierarchy Flowchart"
+            >
+              <GitMerge className="w-3.5 h-3.5 text-saffron-400 shrink-0" />
+              <span>Flowchart</span>
+            </button>
+
+            {/* Supreme Court Case Laws Button */}
+            <button
+              onClick={onOpenLegalRefs}
+              className="hidden xl:flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 text-xs font-medium rounded-lg transition shrink-0"
+              title="Supreme Court Case Laws & References"
+            >
+              <Scale className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>Case Laws</span>
             </button>
 
             {/* Decision Wizard Button */}

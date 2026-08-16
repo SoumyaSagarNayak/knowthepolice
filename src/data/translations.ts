@@ -22,6 +22,13 @@ export interface Translation {
   nextSteps: string;
   complaintGeneratorBtn: string;
   stateDirectoryBtn: string;
+  arrestChecklistBtn: string;
+  escalationFlowchartBtn: string;
+  legalReferencesBtn: string;
+  listenAudio: string;
+  stopAudio: string;
+  downloadRightsCard: string;
+  showingResultsFor: string;
   emergencyContactsTitle: string;
   disclaimerTitle: string;
   disclaimerText: string;
@@ -50,6 +57,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     nextSteps: "Next Legal Remedy",
     complaintGeneratorBtn: "Draft Official SP Complaint",
     stateDirectoryBtn: "State PCA Directory",
+    arrestChecklistBtn: "D.K. Basu Arrest Checklist",
+    escalationFlowchartBtn: "FIR Refusal Hierarchy",
+    legalReferencesBtn: "Supreme Court Case Laws",
+    listenAudio: "Listen Audio",
+    stopAudio: "Stop Audio",
+    downloadRightsCard: "Download Rights Card (PNG)",
+    showingResultsFor: "Showing situations for",
     emergencyContactsTitle: "National Helplines (24x7 Direct Toll-Free)",
     disclaimerTitle: "Public Educational Legal Notice",
     disclaimerText: "This portal provides public educational awareness based on Bharatiya Nagarik Suraksha Sanhita (BNSS 2023), Code of Criminal Procedure (CrPC 1973), BNS 2023, Indian Constitution & Supreme Court directives. It is not a substitute for formal legal representation. For legal aid, contact NALSA Helpline 15100."
@@ -76,6 +90,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     nextSteps: "आगे का अगला कानूनी कदम",
     complaintGeneratorBtn: "एसपी शिकायत पत्र तैयार करें",
     stateDirectoryBtn: "राज्य पुलिस शिकायत निर्देशिका",
+    arrestChecklistBtn: "डी.के. बासु गिरफ्तारी चेकलिस्ट",
+    escalationFlowchartBtn: "एफआईआर मना पर कदम (फ्लोचार्ट)",
+    legalReferencesBtn: "सुप्रीम कोर्ट के प्रमुख फैसले",
+    listenAudio: "सुनें (ऑडियो)",
+    stopAudio: "ऑडियो रोकें",
+    downloadRightsCard: "अधिकार कार्ड डाउनलोड करें (PNG)",
+    showingResultsFor: "परिणाम स्थिति",
     emergencyContactsTitle: "आपातकालीन हेल्पलाइन नंबर (24x7 टोल-फ्री)",
     disclaimerTitle: "जन जागरूकता कानूनी सूचना",
     disclaimerText: "यह वेबसाइट भारतीय नागरिक सुरक्षा संहिता (BNSS 2023), CrPC, BNS और सर्वोच्च न्यायालय के फैसलों के आधार पर जन जागरूकता के लिए बनाई गई है। यह कानूनी सलाह का विकल्प नहीं है। मुफ्त कानूनी सहायता के लिए NALSA 15100 पर संपर्क करें।"
@@ -102,6 +123,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     nextSteps: "पुढील कायदेशीर पाऊल",
     complaintGeneratorBtn: "SP कडे अर्ज तयार करा",
     stateDirectoryBtn: "राज्य पोलीस निर्देशिका",
+    arrestChecklistBtn: "D.K. Basu अटक चेकलिस्ट",
+    escalationFlowchartBtn: "तक्रार प्रवाह (Flowchart)",
+    legalReferencesBtn: "सर्वोच्च न्यायालयाचे निकाल",
+    listenAudio: "ऐका (Audio)",
+    stopAudio: "ऑडिओ थांबवा",
+    downloadRightsCard: "कार्ड डाउनलोड करा",
+    showingResultsFor: "दाखवत असलेले निकाल",
     emergencyContactsTitle: "आणीबाणी हेल्पलाइन",
     disclaimerTitle: "कायदेशीर माहिती सूचना",
     disclaimerText: "ही वेबसाईट जनजागृतीसाठी आहे. तातडीच्या कायदेशीर मदतीसाठी NALSA १५१०० वर संपर्क साधा."
@@ -128,6 +156,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     nextSteps: "அடுத்த சட்ட நடவடிக்கை",
     complaintGeneratorBtn: "எஸ்பி புகார் கடிதம் தயாரிக்க",
     stateDirectoryBtn: "மாநில காவல்துறை முகவரி",
+    arrestChecklistBtn: "கைது சரிபார்ப்புப் பட்டியல்",
+    escalationFlowchartBtn: "புகார் படிநிலைகள்",
+    legalReferencesBtn: "உச்சநீதிமன்ற தீர்ப்புகள்",
+    listenAudio: "ஒலியைக் கேட்க",
+    stopAudio: "ஒலியை நிறுத்த",
+    downloadRightsCard: "கார்டைப் பதிவிறக்க",
+    showingResultsFor: "காட்டப்படும் முடிவுகள்",
     emergencyContactsTitle: "அவசர உதவி எண்கள்",
     disclaimerTitle: "சட்ட விழிப்புணர்வு அறிவிப்பு",
     disclaimerText: "இந்த இணையதளம் பொது விழிப்புணர்வுக்கானது. உடனடி சட்ட உதவிக்கு NALSA 15100ஐ தொடர்பு கொள்ளவும்."
@@ -154,6 +189,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     nextSteps: "পরবর্তী আইনি পদক্ষেপ",
     complaintGeneratorBtn: "এসপি অভিযোগ পত্র তৈরি করুন",
     stateDirectoryBtn: "রাজ্য পুলিশ ডিরেক্টরি",
+    arrestChecklistBtn: "ডি.কে. বসু গ্রেফতার চেকলিস্ট",
+    escalationFlowchartBtn: "অভিযোগের ধাপসমূহ (Flowchart)",
+    legalReferencesBtn: "সুপ্রিম কোর্টের গুরুত্বপূর্ণ রায়",
+    listenAudio: "অডিও শুনুন",
+    stopAudio: "অডিও থামান",
+    downloadRightsCard: "কার্ড ডাউনলোড করুন",
+    showingResultsFor: "প্রদর্শিত ফলাফল",
     emergencyContactsTitle: "জরুরি হেল্পলাইন নম্বর",
     disclaimerTitle: "জনসচেতনতামূলক আইনি বিজ্ঞপ্তি",
     disclaimerText: "এটি জনসচেতনতার জন্য তৈরি। সরাসরি আইনি সাহায্যের জন্য NALSA ১৫১০০ এ যোগাযোগ করুন।"
@@ -180,6 +222,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     nextSteps: "తదుపరి చట్టపరమైన అడుగు",
     complaintGeneratorBtn: "SP ఫిర్యాదు పత్రం తయారు చేయండి",
     stateDirectoryBtn: "రాష్ట్ర పోలీసు డైరెక్టరీ",
+    arrestChecklistBtn: "అరెస్ట్ చెక్‌లిస్ట్ (D.K. Basu)",
+    escalationFlowchartBtn: "ఫిర్యాదుల క్రమం (Flowchart)",
+    legalReferencesBtn: "సుప్రీం కోర్టు తీర్పులు",
+    listenAudio: "వినండి (Audio)",
+    stopAudio: "ఆపండి",
+    downloadRightsCard: "కార్డ్ డౌన్‌లోడ్ చేయండి",
+    showingResultsFor: "ఫలితాలు",
     emergencyContactsTitle: "అత్యవసర హెల్ప్‌లైన్ నంబర్లు",
     disclaimerTitle: "సమాచార నోటీసు",
     disclaimerText: "ఇది అవగాహన కోసం మాత్రమే. ఉచిత చట్టపరమైన సహాయం కోసం NALSA 15100కి కాల్ చేయండి."
@@ -205,7 +254,14 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     evidenceToKeep: "ಇಟ್ಟುಕೊಳ್ಳಬೇಕಾದ ದಾಖಲೆಗಳು",
     nextSteps: "ಮುಂದಿನ ಕಾನೂನು ಹೆಜ್ಜೆ",
     complaintGeneratorBtn: "SP ದೂರು ಪತ್ರ ಸಿದ್ಧಪಡಿಸಿ",
-    stateDirectoryBtn: "ರಾಜ್ಯ ಪೊಲೀಸ್ ಡೈರೆಕ್ಟರಿ",
+    stateDirectoryBtn: "ರಾಜ್ಯ ಪೊಲೀಸ್ ನಿರ್ದೇಶನಾಲಯ",
+    arrestChecklistBtn: "ಬಂಧನ ಪರಿಶೀಲನಾ ಪಟ್ಟಿ",
+    escalationFlowchartBtn: "ದೂರು ಕ್ರಮಗಳ ಫ್ಲೋಚಾರ್ಟ್",
+    legalReferencesBtn: "ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ತೀರ್ಪುಗಳು",
+    listenAudio: "ಆಡಿಯೋ ಆಲಿಸಿ",
+    stopAudio: "ಆಡಿಯೋ ನಿಲ್ಲಿಸಿ",
+    downloadRightsCard: "ಹಕ್ಕುಗಳ ಕಾರ್ಡ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+    showingResultsFor: "ಫಲಿತಾಂಶಗಳು",
     emergencyContactsTitle: "ತುರ್ತು ಸಹಾಯವಾಣಿ",
     disclaimerTitle: "ಕಾನೂನು ಅರಿವು ಸೂಚನೆ",
     disclaimerText: "ಇದು ಸಾರ್ವಜನಿಕ ಅರಿವಿಗಾಗಿ ಮಾತ್ರ. ಉಚಿತ ಕಾನೂನು ನೆರವಿಗೆ NALSA 15100 ಗೆ ಕರೆ ಮಾಡಿ."
