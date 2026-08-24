@@ -11,7 +11,7 @@ The architecture is designed for:
 
 ---
 
-## 2. High-Level System Architecture
+### 2. High-Level System Architecture
 
 ```mermaid
 graph TD
@@ -19,10 +19,14 @@ graph TD
     User --> Hero[Hero Search & Emergency Helplines]
     User --> CategoryPills[Category Filter Pills]
     User --> SituationsGrid[12 Situation Cards Grid]
+    User --> MobileBar[Fixed Mobile Emergency Bar]
 
     subgraph Core Modals & Interactivity
         Header --> SOSModal[🚨 30-Sec SOS Emergency Modal]
         Header --> AIGuideModal[🤖 AI Legal Situation Guide]
+        Header --> ChecklistModal[📋 D.K. Basu Arrest Checklist]
+        Header --> FlowchartModal[🔀 FIR Refusal Escalation Flowchart]
+        Header --> LegalRefsModal[⚖️ Supreme Court Case Laws]
         Header --> RightsPassModal[🎴 Offline Citizen Rights Pass]
         Header --> WizardModal[⚡ Am I Detained? Diagnostic Wizard]
         Header --> ComplaintModal[✍️ Official SP Complaint Generator]
@@ -102,10 +106,14 @@ sequenceDiagram
 | Component | Path | Core Responsibility |
 | :--- | :--- | :--- |
 | **App** | `src/App.tsx` | Master state manager (language, search filter, active modals, theme styling). |
-| **Header** | `src/components/Header.tsx` | Sticky navbar with logo, emergency SOS trigger, language dropdown, and modal launcher tools. |
+| **Header** | `src/components/Header.tsx` | Sticky navbar with logo, emergency SOS trigger, language dropdown, and Legal Tools Hub menu. |
+| **MobileEmergencyBar** | `src/components/MobileEmergencyBar.tsx` | Fixed bottom emergency call bar on mobile viewports (`md:hidden`). |
 | **SituationCard** | `src/components/SituationCard.tsx` | Glassmorphism card displaying scenario summary, category icon, golden rule pill, and legal section badge. |
 | **SituationDetailModal** | `src/components/SituationDetailModal.tsx` | Renders the complete **7-step legal breakdown** (*What is Happening, Your Rights, What To Do, What To Avoid, Where To Complain, Evidence, Next Step*). |
 | **EmergencySOSModal** | `src/components/EmergencySOSModal.tsx` | High-contrast emergency screen with 3 Golden Rules, TTS speech playback, and tap-to-call helpline dialers. |
+| **ArrestChecklistModal** | `src/components/ArrestChecklistModal.tsx` | Interactive 7-point D.K. Basu arrest compliance guidelines checklist. |
+| **EscalationFlowchartModal** | `src/components/EscalationFlowchartModal.tsx` | Step-by-step FIR refusal escalation hierarchy (SHO → SP → Magistrate → PCA). |
+| **LegalReferencesModal** | `src/components/LegalReferencesModal.tsx` | Landmark Supreme Court rulings (*D.K. Basu*, *Arnesh Kumar*, *Lalita Kumari*, *Prakash Singh*) and government law portals. |
 | **ComplaintGeneratorModal** | `src/components/ComplaintGeneratorModal.tsx` | Interactive form generating formal legal complaints under **Sec 173(4) BNSS / 154(3) CrPC** with live document preview and print/PDF support. |
 | **StateDirectoryModal** | `src/components/StateDirectoryModal.tsx` | Filterable directory of Police Complaints Authorities (PCA), Anti-Corruption Bureaus (ACB), and SHRCs for 28 States & UTs. |
 | **AIChatBotWidget** | `src/components/AIChatBotWidget.tsx` | Floating interactive conversational AI assistant with in-chat website action dispatchers and voice playback. |
@@ -187,8 +195,28 @@ export interface StateAuthority {
 
 ---
 
-## 7. Build & Deployment Architecture
+## 7. Responsive Architecture & Breakpoint Strategy
+
+- **Mobile Viewports (320px – 639px)**:
+  - Header displays compact logo and title (`min-w-0 truncate`).
+  - `MobileEmergencyBar` stays fixed at viewport bottom (`fixed bottom-0 z-40`).
+  - Main app wrapper applies bottom padding (`pb-20 md:pb-0`) to prevent UI overlap.
+  - Floating `AIChatBotWidget` launcher is positioned above the mobile bar (`bottom-16 md:bottom-6`).
+  - Category filter pills support edge-to-edge negative-margin touch scrolling (`-mx-4 px-4 sm:mx-0 sm:px-0`).
+
+- **Tablet Viewports (640px – 1023px)**:
+  - Grid structures expand to 2-column layouts (`sm:grid-cols-2`).
+  - Full title badges and Legal Tools Hub menu label expand.
+
+- **Desktop Viewports (1024px+)**:
+  - Full 3-column & 4-column grid views (`lg:grid-cols-3` / `lg:grid-cols-4`).
+  - Complaint Generator splits into 5-col form input and 7-col live document preview.
+
+---
+
+## 8. Build & Deployment Architecture
 
 - **Bundler**: Vite 5 configured for ES2020 target and TypeScript strict checking.
 - **Vercel SPA Rewrite Rules**: `vercel.json` maps all route traffic to `/index.html` to prevent 404 errors during direct link navigation.
 - **Git Version Control**: Clean git history tracking features, datasets, and components.
+ets, and components.

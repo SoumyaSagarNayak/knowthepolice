@@ -90,7 +90,14 @@ Every scenario provides a **7-Step Clarity Breakdown**:
 - 3-step rapid questionnaire wizard (*Location → Officer Action → Freedom Status*).
 - Returns instant legal status classification, risk rating (Green / Yellow / Red), governing code sections, and direct action remedies.
 
-### 🌐 8. Multilingual & Search Engine
+### 📱 8. 100% Responsive & Touch-Optimized UI
+- Fully optimized for all viewports from compact mobile screens (**320px+**) to tablets and wide desktop monitors.
+- Mobile emergency dial bar fixed at the bottom with automatic page bottom-padding (`pb-20 md:pb-0`) to prevent content overlap.
+- Edge-to-edge touch swipe scrolling for category filter pills (`-mx-4 px-4 sm:mx-0 sm:px-0`).
+- Floating AI Assistant launcher intelligently positioned above bottom bars (`bottom-16 md:bottom-6`).
+- Dropdown menus, modal drawers, and preview documents scale dynamically without horizontal scrolling.
+
+### 🌐 9. Multilingual & Search Engine
 - 7 Languages: **English**, **Hindi (हिंदी)**, **Marathi (मराठी)**, **Tamil (தமிழ்)**, **Bengali (বাংলা)**, **Telugu (తెలుగు)**, **Kannada (ಕನ್ನಡ)**.
 - Real-time client-side search across legal keywords, section numbers, and scenarios.
 
@@ -174,12 +181,16 @@ knowyourpolice/
 │   ├── components/
 │   │   ├── AIChatBotWidget.tsx       # Interactive Nyaya AI Chatbot Widget
 │   │   ├── AILegalAssistantModal.tsx # AI Situation Query Guide Modal
+│   │   ├── ArrestChecklistModal.tsx  # D.K. Basu Arrest Compliance Checklist
 │   │   ├── ComplaintGeneratorModal.tsx# SP/PCA Complaint Letter Generator
 │   │   ├── DecisionWizardModal.tsx  # "Am I Detained?" Diagnostic Wizard
 │   │   ├── EmergencySOSModal.tsx    # 30-Sec Crisis SOS Mode & Speech
+│   │   ├── EscalationFlowchartModal.tsx# FIR Refusal Escalation Hierarchy
 │   │   ├── FAQSection.tsx           # Legal FAQ Accordion
 │   │   ├── Footer.tsx               # Official citations & GitHub links
-│   │   ├── Header.tsx               # Responsive sticky navbar
+│   │   ├── Header.tsx               # Responsive sticky navbar & tools menu
+│   │   ├── LegalReferencesModal.tsx # Supreme Court Case Laws & Statutes
+│   │   ├── MobileEmergencyBar.tsx   # Fixed Mobile Emergency Dial Bar
 │   │   ├── RightsCardModal.tsx      # Offline Wallet Rights Pass
 │   │   ├── SituationCard.tsx        # Card display for 12 scenarios
 │   │   ├── SituationDetailModal.tsx # 7-step detailed legal breakdown
