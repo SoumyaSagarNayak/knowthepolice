@@ -215,7 +215,7 @@ Legal Helpline: NALSA 15100 / Emergency 112`;
         </div>
 
         {/* Drawer Footer Actions */}
-        <div className="bg-slate-950 p-4 border-t border-slate-800 flex items-center justify-between gap-3 flex-shrink-0">
+        <div className="bg-slate-950 p-4 border-t border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 flex-shrink-0">
           <button
             onClick={() => {
               if (isSpeaking) window.speechSynthesis.cancel();
@@ -224,7 +224,7 @@ Legal Helpline: NALSA 15100 / Emergency 112`;
                 onOpenComplaintGenWithSit(situation.id);
               }
             }}
-            className="px-4 py-2.5 bg-saffron-500 hover:bg-saffron-400 text-slate-950 text-xs font-extrabold rounded-xl shadow-lg flex items-center space-x-2 transition"
+            className="w-full sm:w-auto px-4 py-2.5 bg-saffron-500 hover:bg-saffron-400 text-slate-950 text-xs font-extrabold rounded-xl shadow-lg flex items-center justify-center space-x-2 transition"
           >
             <FileText className="w-4 h-4" />
             <span>Draft SP Complaint →</span>
@@ -235,7 +235,7 @@ Legal Helpline: NALSA 15100 / Emergency 112`;
               if (isSpeaking) window.speechSynthesis.cancel();
               onClose();
             }}
-            className="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl transition"
+            className="w-full sm:w-auto px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl transition"
           >
             Close Drawer
           </button>

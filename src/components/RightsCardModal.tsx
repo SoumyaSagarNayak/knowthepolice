@@ -146,30 +146,30 @@ export const RightsCardModal: React.FC<RightsCardModalProps> = ({ isOpen, onClos
       <div className="relative w-full max-w-2xl bg-slate-900 border-2 border-saffron-500/80 rounded-3xl shadow-2xl overflow-hidden my-auto text-slate-100">
         
         {/* Modal Header */}
-        <div className="bg-slate-950 p-5 border-b border-slate-800 flex items-center justify-between">
+        <div className="bg-slate-950 p-4 sm:p-5 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center space-x-3">
             <img
               src="/police-logo.png"
               alt="Police Badge"
-              className="w-9 h-9 object-contain bg-slate-900 rounded-xl p-1 border border-saffron-500/40"
+              className="w-8 h-8 sm:w-9 sm:h-9 object-contain bg-slate-900 rounded-xl p-1 border border-saffron-500/40 flex-shrink-0"
             />
             <div>
-              <h2 className="text-lg sm:text-xl font-extrabold text-white">
+              <h2 className="text-base sm:text-xl font-extrabold text-white">
                 {isHindi ? 'ऑफ़लाइन नागरिक अधिकार वॉलेट पास' : 'Offline Citizen Rights Wallet Pass'}
               </h2>
-              <p className="text-xs text-slate-400">
+              <p className="text-[11px] sm:text-xs text-slate-400">
                 {isHindi ? 'गैलरी में सुरक्षित रखने या प्रिंट करने के लिए डाउनलोड करें' : 'Save as PNG image or print for internet-offline emergency situations'}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 self-end sm:self-auto shrink-0">
             <button
               onClick={handleDownloadPNG}
-              className="px-3 py-1.5 bg-saffron-500 hover:bg-saffron-400 text-slate-950 font-extrabold text-xs rounded-xl flex items-center space-x-1 shadow transition"
+              className="px-2.5 sm:px-3 py-1.5 bg-saffron-500 hover:bg-saffron-400 text-slate-950 font-extrabold text-[11px] sm:text-xs rounded-xl flex items-center space-x-1 shadow transition"
             >
-              <Download className="w-4 h-4" />
-              <span>{isHindi ? 'कार्ड डाउनलोड (PNG)' : 'Download Card (PNG)'}</span>
+              <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>{isHindi ? 'कार्ड (PNG)' : 'Download (PNG)'}</span>
             </button>
 
             <button

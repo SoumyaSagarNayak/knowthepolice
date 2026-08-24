@@ -73,7 +73,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="dark bg-mesh-pattern text-slate-100 min-h-screen font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-saffron-500 selection:text-slate-950">
+    <div className="dark bg-mesh-pattern text-slate-100 min-h-screen font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-saffron-500 selection:text-slate-950 pb-20 md:pb-0">
       
       {/* Header Bar */}
       <Header
@@ -103,14 +103,14 @@ export const App: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center space-x-2 px-4 py-2 bg-slate-900/90 border border-saffron-500/30 rounded-full shadow-lg backdrop-blur-md"
+            className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-slate-900/90 border border-saffron-500/30 rounded-full shadow-lg backdrop-blur-md max-w-full"
           >
             <img
               src="/police-logo.png"
               alt="Police Rights Badge"
-              className="w-5 h-5 object-contain"
+              className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0"
             />
-            <span className="text-xs font-extrabold text-saffron-400">
+            <span className="text-[10px] sm:text-xs font-extrabold text-saffron-400 leading-tight">
               Citizens Legal Defense Portal • Bharatiya Nagarik Suraksha Sanhita (BNSS 2023)
             </span>
           </motion.div>
@@ -165,13 +165,13 @@ export const App: React.FC = () => {
             </div>
 
             {/* Suggested Pill Tags */}
-            <div className="flex flex-wrap items-center justify-center gap-1.5 pt-1">
+            <div className="flex flex-wrap items-center justify-center gap-1.5 pt-1 max-w-full">
               <span className="text-xs font-semibold text-slate-400 mr-1 hidden sm:inline">Popular:</span>
               {searchPills.map((pill) => (
                 <button
                   key={pill.query}
                   onClick={() => setSearchTerm(pill.query)}
-                  className={`px-3 py-1 text-xs rounded-full border transition-all ${
+                  className={`px-2.5 sm:px-3 py-1 text-[11px] sm:text-xs rounded-full border transition-all ${
                     searchTerm === pill.query
                       ? 'bg-saffron-500 text-navy-950 border-saffron-400 font-bold'
                       : 'bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-600 hover:text-white'
@@ -332,7 +332,7 @@ export const App: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
         
         {/* Category Pill Filters */}
-        <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none">
+        <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
           {[
             { id: 'all', label: t.allCategories },
             { id: 'street', label: t.streetCategory },

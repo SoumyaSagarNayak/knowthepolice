@@ -120,22 +120,22 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="h-1 w-full bg-gradient-to-r from-[#FF671F] via-[#FFFFFF] to-[#046A38]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-3 min-h-[64px] gap-3">
+        <div className="flex items-center justify-between py-2.5 sm:py-3 min-h-[60px] gap-1.5 sm:gap-3">
           
           {/* Logo & Brand Title */}
-          <div className="flex items-center space-x-3 shrink-0">
+          <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 shrink">
             <div className="relative shrink-0">
               <img
                 src="/police-logo.png"
                 alt="Police Rights Logo"
-                className="w-10 h-10 object-contain bg-slate-900 rounded-xl p-1 border border-slate-700/80 shadow-md"
+                className="w-8 h-8 sm:w-10 sm:h-10 object-contain bg-slate-900 rounded-xl p-1 border border-slate-700/80 shadow-md"
               />
-              <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-slate-950 animate-pulse" />
+              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-500 rounded-full border-2 border-slate-950 animate-pulse" />
             </div>
 
-            <div>
-              <div className="flex items-center space-x-2">
-                <h1 className="text-base sm:text-lg md:text-xl font-black text-white tracking-tight">
+            <div className="min-w-0">
+              <div className="flex items-center space-x-1.5">
+                <h1 className="text-xs sm:text-lg md:text-xl font-black text-white tracking-tight truncate">
                   {t.appName}
                 </h1>
                 <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-extrabold bg-saffron-500/10 text-saffron-400 border border-saffron-500/30 rounded-full">
@@ -149,13 +149,13 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Clean Right Actions Suite */}
-          <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
+          <div className="flex items-center space-x-1 sm:space-x-3 shrink-0">
             
             {/* Quick Tools Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsToolsOpen(!isToolsOpen)}
-                className={`px-3 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 border shadow-sm ${
+                className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition flex items-center space-x-1 sm:space-x-1.5 border shadow-sm ${
                   isToolsOpen 
                     ? 'bg-saffron-500 text-navy-950 border-saffron-400' 
                     : 'bg-slate-900/90 text-slate-200 border-slate-700/80 hover:bg-slate-800 hover:border-slate-600'
@@ -169,7 +169,7 @@ export const Header: React.FC<HeaderProps> = ({
 
               {/* Dropdown Menu */}
               {isToolsOpen && (
-                <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-slate-900/95 border border-slate-700/90 rounded-2xl shadow-2xl backdrop-blur-2xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="absolute right-0 mt-2 w-[90vw] max-w-sm sm:w-96 bg-slate-900/95 border border-slate-700/90 rounded-2xl shadow-2xl backdrop-blur-2xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
                   <div className="px-4 py-2 border-b border-slate-800 flex items-center justify-between">
                     <span className="text-xs font-extrabold uppercase tracking-wider text-saffron-400 flex items-center space-x-1.5">
                       <ShieldCheck className="w-4 h-4" />
@@ -207,12 +207,12 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* Language Selector */}
-            <div className="relative flex items-center bg-slate-900/90 border border-slate-700/80 rounded-xl px-2.5 py-1.5 shrink-0 shadow-sm">
-              <Globe className="w-3.5 h-3.5 text-slate-400 mr-1.5 shrink-0" />
+            <div className="relative flex items-center bg-slate-900/90 border border-slate-700/80 rounded-xl px-1.5 sm:px-2.5 py-1 sm:py-1.5 shrink-0 shadow-sm">
+              <Globe className="w-3.5 h-3.5 text-slate-400 mr-1 sm:mr-1.5 shrink-0" />
               <select
                 value={currentLang}
                 onChange={(e) => onSelectLang(e.target.value as Language)}
-                className="bg-transparent text-xs font-semibold text-slate-200 focus:outline-none cursor-pointer pr-1"
+                className="bg-transparent text-[11px] sm:text-xs font-semibold text-slate-200 focus:outline-none cursor-pointer pr-0.5 sm:pr-1 max-w-[65px] sm:max-w-none truncate"
               >
                 <option value="en" className="bg-slate-900 text-slate-200">English</option>
                 <option value="hi" className="bg-slate-900 text-slate-200">हिंदी (Hindi)</option>
@@ -227,9 +227,9 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Red SOS Button */}
             <button
               onClick={onOpenSOS}
-              className="px-3 py-2 bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-red-900/40 border border-red-400/40 transition-all transform hover:scale-105 active:scale-95 flex items-center space-x-1.5 shrink-0"
+              className="px-2 sm:px-3 py-1.5 sm:py-2 bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-extrabold text-[11px] sm:text-xs rounded-xl shadow-lg shadow-red-900/40 border border-red-400/40 transition-all transform hover:scale-105 active:scale-95 flex items-center space-x-1 sm:space-x-1.5 shrink-0"
             >
-              <AlertCircle className="w-4 h-4 text-white animate-pulse shrink-0" />
+              <AlertCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white animate-pulse shrink-0" />
               <span className="font-extrabold tracking-wide">{t.emergencyBtn}</span>
             </button>
 

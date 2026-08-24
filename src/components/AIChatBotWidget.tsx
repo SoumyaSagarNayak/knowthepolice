@@ -147,17 +147,17 @@ export const AIChatBotWidget: React.FC<AIChatBotWidgetProps> = ({
   return (
     <>
       {/* Floating Widget Launcher Button */}
-      <div className="fixed bottom-5 right-5 z-40">
+      <div className="fixed bottom-16 md:bottom-6 right-3 sm:right-6 z-40">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative group p-4 bg-gradient-to-r from-saffron-500 via-amber-500 to-emerald-500 text-navy-950 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 flex items-center space-x-2.5 glow-saffron cursor-pointer"
+          className="relative group p-3.5 sm:p-4 bg-gradient-to-r from-saffron-500 via-amber-500 to-emerald-500 text-navy-950 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 flex items-center space-x-2 sm:space-x-2.5 glow-saffron cursor-pointer"
         >
           <div className="relative">
-            <Bot className="w-7 h-7 text-navy-950 animate-bounce" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-2 border-navy-950 rounded-full animate-ping" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-2 border-navy-950 rounded-full" />
+            <Bot className="w-6 h-6 sm:w-7 sm:h-7 text-navy-950 animate-bounce" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-500 border-2 border-navy-950 rounded-full animate-ping" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-500 border-2 border-navy-950 rounded-full" />
           </div>
-          <span className="hidden sm:inline font-extrabold text-sm tracking-wide uppercase">
+          <span className="hidden sm:inline font-extrabold text-xs sm:text-sm tracking-wide uppercase">
             {isOpen ? 'Close Nyaya AI' : 'Chat with Nyaya AI'}
           </span>
         </button>
@@ -165,7 +165,7 @@ export const AIChatBotWidget: React.FC<AIChatBotWidgetProps> = ({
 
       {/* Chat Window Drawer */}
       {isOpen && (
-        <div className="fixed bottom-20 right-3 sm:right-6 z-50 w-[94vw] sm:w-[420px] max-h-[600px] h-[80vh] bg-navy-950 border-2 border-slate-700/80 rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-fadeIn">
+        <div className="fixed bottom-20 sm:bottom-24 right-3 sm:right-6 z-50 w-[94vw] sm:w-[420px] max-h-[75vh] sm:max-h-[600px] h-[75vh] sm:h-[80vh] bg-navy-950 border-2 border-slate-700/80 rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-fadeIn">
           
           {/* Header */}
           <div className="p-4 bg-gradient-to-r from-navy-900 via-slate-900 to-navy-900 border-b border-slate-800 flex items-center justify-between">

@@ -142,7 +142,7 @@ Signature of Complainant
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <div>
                 <label className="block text-xs font-semibold text-slate-300 mb-1">Phone Number</label>
                 <input
@@ -216,7 +216,7 @@ Signature of Complainant
 
           {/* Right Live Preview (7 cols) */}
           <div className="lg:col-span-7 space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
               <h3 className="text-xs font-bold text-emerald-400 uppercase tracking-wider">
                 Generated Legal Document Preview
               </h3>
